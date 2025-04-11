@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <router-view></router-view>
+  <div>
+    <h1>Western Page</h1>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style></style>
