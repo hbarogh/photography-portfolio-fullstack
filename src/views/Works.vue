@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <h1>Western Page</h1>
+    <h1>Works Page</h1>
   </div>
 </template>
 

@@ -1,22 +1,28 @@
 import { createRouter, createWebHistory} from 'vue-router';
 import type {RouteRecordRaw} from 'vue-router';
-import HomePage from '../views/HomePage.vue';
-import Western from '../views/Western.vue';
+import Home from '../views/Home.vue';
+import Works from '../views/Works.vue';
 
 
 
 import NotFoundPage from '../views/NotFoundPage.vue';
+import AboutPage from '../views/AboutPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name:  'HomePage',
-    component: HomePage
+    name:  'Home',
+    component: Home
   },
   {
-    path: '/Western',
-    name: 'Western',
-    component: Western,
+    path: '/Works',
+    name: 'Works',
+    component: Works,
+  },
+  {
+    path: '/AboutPage',
+    name: 'AboutPage',
+    component: AboutPage,
   },
   {
     path: '/:pathMatch(.*)*',

@@ -1,19 +1,24 @@
 <script setup lang="ts">
+  import { NSplit, NMenu } from 'naive-ui';
+  import { useRouter } from 'vue-router';
+  import {menuOptions} from '../constants/menu-options';
+  
+  const router = useRouter()
+
+  function handleMenuSelect(key: string){
+    router.push({name: key})
+  }
+
 </script>
 
 
 <template>
-<div class="nav-bar">
-    <div class="nav-buttons-wrap">
-      <router-link to="/Western">
-        <button>Western</button>
-      </router-link>
 
-      <router-link to="/HomePage">
-        <button>Home</button>
-      </router-link>
-    </div>
-  </div>
+    <n-menu class="nav-bar"
+    mode="horizontal" 
+    :options="menuOptions"
+    @update:value="handleMenuSelect"
+    />
 </template>
 
 
