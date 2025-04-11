@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { NSplit, NMenu } from 'naive-ui';
+  import { NMenu } from 'naive-ui';
   import { useRouter } from 'vue-router';
   import {menuOptions} from '../constants/menu-options';
   
