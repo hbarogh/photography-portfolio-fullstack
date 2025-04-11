@@ -13,7 +13,6 @@
 
 
 <template>
-
     <n-menu class="nav-bar"
     mode="horizontal" 
     :options="menuOptions"
