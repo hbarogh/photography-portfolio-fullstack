@@ -8,8 +8,8 @@ export const menuOptions = [
     key: 'Works',
     children: [
       {
-        label: 'AboutPage',
-        key: 'AboutPage'
+        label: 'Works',
+        key: 'Works'
       }
     ]
   },
