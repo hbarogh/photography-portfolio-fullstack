@@ -5,7 +5,13 @@ export const menuOptions = [
   },
   {
     label: 'Works',
-    key: 'Works'
+    key: 'Works',
+    children: [
+      {
+        label: 'AboutPage',
+        key: 'AboutPage'
+      }
+    ]
   },
   {
     label: 'About',
