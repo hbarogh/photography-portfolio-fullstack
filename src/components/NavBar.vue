@@ -6,7 +6,16 @@
   const router = useRouter()
 
   function handleMenuSelect(key: string){
-    router.push({name: key})
+    if (key === 'Home') {
+      router.push({ name: 'Home' })
+    } 
+    else if (key === 'AboutPage') {
+      router.push({ name: 'AboutPage' })
+    } 
+    else {
+      // Anything else is assumed to be a collection
+      router.push({ name: 'PhotoCollectionPage', params: { collection: key } })
+     }
   }
 
 </script>

@@ -10,6 +10,10 @@ export const menuOptions = [
       {
         label: 'Works',
         key: 'Works'
+      },
+      {
+        label: 'Western',
+        key: 'Western'
       }
     ]
   },
