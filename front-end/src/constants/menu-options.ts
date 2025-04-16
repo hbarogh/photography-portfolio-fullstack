@@ -26,6 +26,14 @@ export const menuOptions = [
       {
         label: 'Grads',
         key: 'Grads'
+      },
+      {
+        label: 'Femme Hoops',
+        key: 'FemmeHoops'
+      },
+      {
+        label: 'No Rivals',
+        key: 'NoRivals'
       }
     ]
   },
