@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {NGrid, NGridItem, NImage, NCard} from 'naive-ui';
+import {NGrid, NGridItem, NImage, NCard, NCarousel, NCarouselItem} from 'naive-ui';
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
 import axios from 'axios';
@@ -38,6 +38,20 @@ onMounted(() => {
         </n-grid-item>
       </n-grid>
     </div>
+    <!-- <n-carousel
+    effect="card"
+    prev-slide-style="transform: translateX(-150%) translateZ(-800px);"
+    next-slide-style="transform: translateX(50%) translateZ(-800px);"
+    style="height: 90vh"
+    :show-dots="false"
+    >
+      <n-carousel-item v-for="(url, index) in photos" :key="index" :style="{ width: '60%' }">
+        <img
+          class="carousel-img"
+          :src="url"
+        >
+      </n-carousel-item>
+    </n-carousel> -->
   </div>
 
 </template>
@@ -45,4 +59,10 @@ onMounted(() => {
 
 
 <style>
+.carousel-img {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 </style>
