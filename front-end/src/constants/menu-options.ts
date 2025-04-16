@@ -14,6 +14,18 @@ export const menuOptions = [
       {
         label: 'Western',
         key: 'Western'
+      },
+      {
+        label: 'BTB',
+        key: 'BTB'
+      },
+      {
+        label: 'New York',
+        key: 'NewYork'
+      },
+      {
+        label: 'Grads',
+        key: 'Grads'
       }
     ]
   },

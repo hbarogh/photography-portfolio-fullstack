@@ -1,19 +1,45 @@
 <script setup lang="ts">
-import {NGrid, NGridItem, NImage} from 'naive-ui';
+import {NGrid, NGridItem, NImage, NCard} from 'naive-ui';
 import { useRoute } from 'vue-router'
 import { ref, onMounted } from 'vue'
-
+import axios from 'axios';
 const route = useRoute()
 const collection = route.params.collection as string 
+const photos = ref<string[]>([]);
+async function fetchPhotos(collection: string): Promise<void> {
+  try{
+    const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
+    photos.value = response.data.resources.map((img: any) => img.secure_url);
+  }
+  catch (error){
+    alert(`Axios error: ${error}`);
+    console.error('Axios error:', error);
+  }
+}
 
+onMounted(() => {
+  fetchPhotos(collection);
+})
 
 </script>
 
 
 <template>
   <div>
-    <h1>Photo Collection Page</h1>
+    <h1>{{ collection }} Collection</h1>
+    <div>
+      <n-grid cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
+        <n-grid-item v-for="(url, index) in photos" :key="index" >
+          <n-card :bordered="true" :hoverable="true" class="grid-card">
+            <n-image :src="url" alt="photo" width="100%" object-fit="fill">
+  
+            </n-image>
+          </n-card>
+        </n-grid-item>
+      </n-grid>
+    </div>
   </div>
+
 </template>
 
 
