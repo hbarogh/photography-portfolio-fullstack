@@ -30,7 +30,11 @@ export const menuOptions = [
       {
         label: 'No Rivals',
         key: 'NoRivals'
-      }
+      },
+      {
+        label: 'Branding',
+        key: 'Branding'
+      },
     ]
   },
   {
