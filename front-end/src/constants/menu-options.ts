@@ -16,8 +16,8 @@ export const menuOptions = [
         key: 'Fashion'
       },
       {
-        label: 'New York',
-        key: 'NewYork'
+        label: 'Travel',
+        key: 'Travel'
       },
       {
         label: 'Grads',
