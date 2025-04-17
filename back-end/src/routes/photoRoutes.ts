@@ -1,5 +1,6 @@
 import express from 'express';
 import cloudinary from '../utils/cloudinary';
+import type { ImageProps } from '../utils/types';
 
 const router = express.Router()
 
@@ -17,7 +18,18 @@ router.get('/:collection', async (req, res) => {
       .max_results(50)
       .execute();
 
-    res.json(results);
+    const optimizedImages = results.resources.map((img: ImageProps) => {
+      const transformedUrl = img.secure_url.replace(
+        '/upload',
+        '/upload/w_1500,f_auto/'
+      );
+      return{
+        ...img,
+        optimized_url: transformedUrl
+      };
+    });
+    res.json(optimizedImages);
+    // res.json(results);
   }
   catch (error) {
     console.log(error);

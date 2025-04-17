@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import {NGrid, NGridItem, NImage, NCard, NCarousel, NCarouselItem} from 'naive-ui';
+import {NGrid, NGridItem, NImage, NCard} from 'naive-ui';
 import { useRoute } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import axios from 'axios';
 const route = useRoute()
-const collection = route.params.collection as string 
+const collection = ref(route.params.collection as string); 
 const photos = ref<string[]>([]);
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
-    photos.value = response.data.resources.map((img: any) => img.secure_url);
+    photos.value = response.data.map((img: any) => img.optimized_url);
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -18,8 +18,14 @@ async function fetchPhotos(collection: string): Promise<void> {
 }
 
 onMounted(() => {
-  fetchPhotos(collection);
+  fetchPhotos(collection.value);
 })
+
+watch(() => route.params.collection, (newCollection) => {
+  collection.value = newCollection as string;
+  fetchPhotos(collection.value) 
+});
+
 
 </script>
 
