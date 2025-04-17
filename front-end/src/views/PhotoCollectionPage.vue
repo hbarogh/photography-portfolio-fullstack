@@ -6,7 +6,7 @@ import axios from 'axios';
 const route = useRoute()
 const collection = ref(route.params.collection as string); 
 const photos = ref<string[]>([]);
-const API_URL = import.meta.env.BASE_URL || 'http://localhost:5000';
+const API_URL = import.meta.env.BACKEND_API_URL|| 'http://localhost:5000';
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`${API_URL}/api/photos/${collection}`);
