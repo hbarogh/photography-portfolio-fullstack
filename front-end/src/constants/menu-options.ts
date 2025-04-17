@@ -12,8 +12,8 @@ export const menuOptions = [
         key: 'Western'
       },
       {
-        label: 'BTB',
-        key: 'BTB'
+        label: 'Fashion',
+        key: 'Fashion'
       },
       {
         label: 'New York',
@@ -24,16 +24,16 @@ export const menuOptions = [
         key: 'Grads'
       },
       {
-        label: 'Femme Hoops',
-        key: 'FemmeHoops'
-      },
-      {
-        label: 'No Rivals',
-        key: 'NoRivals'
+        label: 'Products',
+        key: 'Products'
       },
       {
         label: 'Branding',
         key: 'Branding'
+      },
+      {
+        label: 'Portraits',
+        key: 'Portraits'
       },
     ]
   },
