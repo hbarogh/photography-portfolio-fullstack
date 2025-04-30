@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NCard, NImage, NGridItem, NGrid } from 'naive-ui';
+import { NCard, NImage } from 'naive-ui';
 // import { useRoute } from 'vue-router';
 import {ref, onMounted} from 'vue';
 import axios from 'axios';
