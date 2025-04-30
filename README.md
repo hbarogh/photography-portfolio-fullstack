@@ -19,7 +19,7 @@ This is the photography portfolio that I am building for the photography that I 
 - Cloudinary-optimized images
 - Dynamic routing with Vue Router
 
-## 🛠 Setup
+## Setup
 
 ```bash
 # Frontend
