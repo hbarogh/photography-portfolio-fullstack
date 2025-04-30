@@ -18,6 +18,7 @@ This is the photography portfolio that I am building for the photography that I 
 - Skeleton loading states
 - Cloudinary-optimized images
 - Dynamic routing with Vue Router
+- Scroll to top of page functionality
 
 ## Setup
 
