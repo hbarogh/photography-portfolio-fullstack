@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NCard, NImage } from 'naive-ui';
+import { NCard, NImage, NSkeleton } from 'naive-ui';
 // import { useRoute } from 'vue-router';
 import {ref, onMounted} from 'vue';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import axios from 'axios';
 // const route = useRoute()
 const collection = ref("AboutPage");
 const photos = ref<string[]>([]);
+const skeleton = ref(true)
 
 async function fetchPhotos(collection: string): Promise<void> {
   try{
@@ -18,7 +19,12 @@ async function fetchPhotos(collection: string): Promise<void> {
     alert(`Axios error: ${error}`);
     console.error('Axios error:', error);
   }
+  finally{
+    skeleton.value = false 
+  }
 }
+
+
 
 onMounted(() => {
   fetchPhotos(collection.value);
@@ -32,15 +38,18 @@ onMounted(() => {
 <template>
 <div class="about-container">
     <h1>About Page</h1>
-    <n-card :bordered="true" :hoverable="true" class="about-card">
+    <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
+    <n-card v-else :bordered="true" :hoverable="true" class="about-card">
       <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover">
 
       </n-image>
     </n-card>
     <div class="about-text">
-      <p>
-        I'm Hayden Barogh, a passionate photographer from Dallas-Fort Worth (DFW). With an innate love for photography and an unyielding desire to capture the moment. I specialize in portrait, street, and product photography. My approach to photography is deeply rooted in a commitment to authenticity. I believe that the most captivating images are those that tell a story, and allow people to connect with the image. Thank you for stopping by and feel free to contact me below.
-      </p>
+      <p>I'm Hayden Barogh, a passionate photographer from Dallas-Fort Worth (DFW). With an innate love for photography and an unyielding desire to capture the moment, I specialize in portrait, street, and product photography.</p>
+
+      <p>My approach to photography is deeply rooted in a commitment to authenticity. I believe that the most captivating images are those that tell a story and allow people to connect with the image.</p>
+
+      <p>Thank you for stopping by, and feel free to contact me below.</p>
     </div>
 </div>
 </template>
@@ -57,14 +66,19 @@ onMounted(() => {
 
 .about-card{
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .about-text {
-  max-width: 50vw;
-  text-align: center;
+  max-width: 1000px;
+  width: 100%;
+  text-align: left;
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: var(--n-text-color);
+}
+.about-text p{
+  margin-bottom: 1.25rem;
 }
 </style>

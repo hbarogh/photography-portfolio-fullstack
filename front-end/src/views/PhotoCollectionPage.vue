@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {NGrid, NGridItem, NImage, NCard} from 'naive-ui';
+import {NGrid, NGridItem, NImage, NCard, NSkeleton} from 'naive-ui';
 import { useRoute } from 'vue-router'
 import { ref, onMounted, watch } from 'vue'
 import axios from 'axios';
 const route = useRoute()
 const collection = ref(route.params.collection as string); 
 const photos = ref<string[]>([]);
-
+const skeleton = ref(true)
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
@@ -15,6 +15,9 @@ async function fetchPhotos(collection: string): Promise<void> {
   catch (error){
     alert(`Axios error: ${error}`);
     console.error('Axios error:', error);
+  }
+  finally{
+    skeleton.value = false
   }
 }
 
@@ -35,12 +38,18 @@ watch(() => route.params.collection, (newCollection) => {
   <div>
     <h1>{{ collection }} Collection</h1>
     <div>
-      <n-grid cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
+      <n-grid v-if="skeleton" cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen" class="skeleton-grid">
+        <n-grid-item v-for="n in 12" :key="n">
+          <n-card :bordered="false">
+            <n-skeleton height="350px" width="100%" :sharp="false"/>
+          </n-card>
+        </n-grid-item>
+      </n-grid>
+
+      <n-grid v-else cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
         <n-grid-item v-for="(url, index) in photos" :key="index" >
           <n-card :bordered="true" :hoverable="true" class="grid-card">
-            <n-image :src="url" alt="photo" width="100%" object-fit="fill">
-  
-            </n-image>
+            <n-image :src="url" alt="photo" width="100%" object-fit="fill"/>
           </n-card>
         </n-grid-item>
       </n-grid>
@@ -66,10 +75,15 @@ watch(() => route.params.collection, (newCollection) => {
 
 
 <style>
-.carousel-img {
+/* .carousel-img {
   margin: 0 auto;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
+
+ .skeleton-grid{
+  width: 100%;
+  max-width: 1000px;
+ }
 </style>
