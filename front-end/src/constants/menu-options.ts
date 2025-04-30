@@ -1,3 +1,5 @@
+import {h} from 'vue';
+
 export const menuOptions = [
   {
     label: 'Home',
@@ -37,5 +39,21 @@ export const menuOptions = [
     label: 'About',
     key: 'AboutPage'
   },
+  {
+    icon: () => h(
+      'a',
+      {
+        href: 'https://www.instagram.com/haydenbproductions/',
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      },
+      [
+        h('img', {
+          src: new URL('../assets/Instagram-Logo.svg', import.meta.url).href,
+          style: 'width: 20px; height: 20px; display: block;'
+        })
+      ]  
+    )
+  }
 
 ]
