@@ -10,6 +10,9 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/photos', photoRoutes);
 
+app.head('/ping', (req, res) => {
+  res.status(200).end();
+});
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
