@@ -12,6 +12,9 @@
     else if (key === 'AboutPage') {
       router.push({ name: 'AboutPage' })
     } 
+    else if (key === 'ContactPage'){
+      router.push({name: 'ContactPage'})
+    }
     else {
       // Anything else is assumed to be a collection
       router.push({ name: 'PhotoCollectionPage', params: { collection: key } })

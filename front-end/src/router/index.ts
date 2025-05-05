@@ -2,7 +2,7 @@ import { createRouter, createWebHistory} from 'vue-router';
 import type {RouteRecordRaw} from 'vue-router';
 import Home from '../views/Home.vue';
 import Works from '../views/Works.vue';
-
+import ContactPage from '../views/ContactPage.vue';
 
 import NotFoundPage from '../views/NotFoundPage.vue';
 import AboutPage from '../views/AboutPage.vue';
@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/AboutPage',
     name: 'AboutPage',
     component: AboutPage,
+  },
+  {
+    path: '/ContactPage',
+    name: 'ContactPage',
+    component: ContactPage,
   },
   {
     path: '/Works/:collection',

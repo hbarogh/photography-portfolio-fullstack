@@ -40,6 +40,10 @@ export const menuOptions = [
     key: 'AboutPage'
   },
   {
+    label: 'Contact',
+    key: 'ContactPage'
+  },
+  {
     icon: () => h(
       'a',
       {
