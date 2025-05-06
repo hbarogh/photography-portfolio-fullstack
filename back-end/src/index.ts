@@ -7,7 +7,11 @@ import contactRoutes from './routes/contactRoutes';
 dotenv.config(); 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+app.use(cors({
+  origin: 'https://photography-portfolio-fullstack-nu.vercel.app/',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use('/api/photos', photoRoutes);
 app.use('/api/contact', contactRoutes);
