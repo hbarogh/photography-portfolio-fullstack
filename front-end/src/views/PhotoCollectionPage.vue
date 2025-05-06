@@ -48,8 +48,8 @@ watch(() => route.params.collection, (newCollection) => {
 
       <n-grid v-else cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
         <n-grid-item v-for="(url, index) in photos" :key="index" >
-          <n-card :bordered="true" :hoverable="true" class="grid-card">
-            <n-image :src="url" alt="photo" width="100%" object-fit="fill"/>
+          <n-card :bordered="false" :hoverable="true" class="grid-card">
+            <n-image :src="url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover" />
           </n-card>
         </n-grid-item>
       </n-grid>
@@ -86,4 +86,11 @@ watch(() => route.params.collection, (newCollection) => {
   width: 100%;
   max-width: 1000px;
  }
+ /* .grid-card{
+  max-width: 600px;
+ }
+ .photo-img{
+  height: 300px;
+  object-fit: cover;
+ } */
 </style>
