@@ -44,15 +44,6 @@ onBeforeUnmount(() => {
     />
   </div>
   <div class="mobile-menu" v-else>
-    <!-- <n-dropdown class="mobileMenu"
-    :options="mobileMenuOptions"
-    trigger="click"
-    @select:value="handleMenuSelect"
-    >
-      <n-button>
-        Menu
-      </n-button>
-    </n-dropdown> -->
     <n-menu
       class="mobileMenu"
       :options="mobileMenuOptions"
