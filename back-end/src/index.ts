@@ -7,8 +7,15 @@ import contactRoutes from './routes/contactRoutes';
 dotenv.config(); 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const allowedOrigins = [
+  'https://photography-portfolio-fullstack-nu.vercel.app',
+  'http://localhost:5173',
+]
 app.use(cors({
-  origin: 'https://photography-portfolio-fullstack-nu.vercel.app/',
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true);
+    return cb(null, allowedOrigins.includes(origin));
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
