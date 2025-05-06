@@ -1,15 +1,18 @@
-# HaydenBProductions 📸
+# HaydenBProductions 
 
-This is the photography portfolio that I am building for the photography that I do as a hobby on the side. I have been making this project to bridge the gap between my creative interest photography and my technical side as well. This website is full stack andI am using Cloudinary to pull the images. Currently cloudinary is also acting as my database because that's where I am storing all the photos. 
+This is a full-stack photography portfolio site I built to combine my creative interest in photography with my technical skills in software development. The site showcases my photography and includes a contact form for visitors to reach out.
+
+Images are hosted on Cloudinary, and contact form submissions are stored in Supabase. I use Prisma as an ORM to interact with the Supabase database, giving me full control over schema management and allowing me to handle migrations in code instead of relying on Supabase’s table editor. This setup deepens my understanding of schema design and database operations in a production environment.
 
 ## Live Deployment 
-- https://photography-portfolio-fullstack-nu.vercel.app/
+- https://haydenbproductions.com
 
 ## Tech Stack
 
 - **Frontend:** Vue 3, Vite, Naive UI, TypeScript  
 - **Backend:** Node.js, Express  
 - **Media Hosting:** Cloudinary  
+- **Database:** Supabase(PostgreSQL) + Prisma
 - **Deployment:** Vercel (frontend), Render (backend)
 
 ## Features
@@ -19,6 +22,7 @@ This is the photography portfolio that I am building for the photography that I 
 - Cloudinary-optimized images
 - Dynamic routing with Vue Router
 - Scroll to top of page functionality
+- Contact form with Supabase integration
 
 ## Setup
 
