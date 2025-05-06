@@ -69,9 +69,11 @@ async function submitContactForm(): Promise<void> {
         <n-form-item required: true >
           <n-input  v-model:value="message"  placeholder="Message Details" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
-        <n-button round primary @click="submitContactForm" style="background-color: black; color: white; width: 15rem">
-          Submit
-        </n-button>
+        <div class="submit-button-wrapper">
+          <n-button round primary @click="submitContactForm" style="background-color: black; color: white; width: 15rem; align-items: center;">
+            Submit
+          </n-button>
+        </div>
       </n-form>
     </n-card>
     <n-card v-else>
@@ -106,4 +108,11 @@ async function submitContactForm(): Promise<void> {
   margin: 1rem 0;
   text-align: center;
 }
+
+.submit-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 </style>
