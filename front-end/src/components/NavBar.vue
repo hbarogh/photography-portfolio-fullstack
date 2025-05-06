@@ -2,8 +2,10 @@
   import { NMenu } from 'naive-ui';
   import { useRouter } from 'vue-router';
   import {menuOptions} from '../constants/menu-options';
-  
+  import {ref, onMounted, onBeforeUnmount } from 'vue';
+  import { mobileMenuOptions } from '../constants/mobile-menu-options';
   const router = useRouter()
+  const isMobile = ref(false)
 
   function handleMenuSelect(key: string){
     if (key === 'Home') {
@@ -21,15 +23,38 @@
      }
   }
 
+  function checkSize(): void {
+    isMobile.value = window.innerWidth <= 500
+  }
+
+  onMounted(() => {
+    checkSize()
+    window.addEventListener('IsMobile', checkSize)
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('IsMobile', checkSize)
+  })
+ 
 </script>
 
 
 <template>
+  <div class="nav-links" v-if=!isMobile>
     <n-menu class="nav-bar"
     mode="horizontal" 
     :options="menuOptions"
     @update:value="handleMenuSelect"
     />
+  </div>
+  <div class="mobile-menu" v-else>
+    <n-menu class="mobileMenu"
+    mode="vertical"
+    :options="mobileMenuOptions"
+    @update:value="handleMenuSelect"
+    />
+  </div>
+    
 </template>
 
 
@@ -39,5 +64,12 @@
   align-items: center; /* Centers items vertically */
   justify-content: space-between; 
   flex-wrap: wrap;
+}
+
+.mobile-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 18px 0 18px;
 }
 </style>
