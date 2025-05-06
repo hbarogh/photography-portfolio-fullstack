@@ -66,6 +66,7 @@ watch(() => route.params.collection, (newCollection) => {
  .skeleton-grid{
   width: 100%;
   max-width: 1000px;
+  align-items: center;
  }
  .collection-title{
   text-align: center;
