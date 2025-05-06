@@ -1,6 +1,6 @@
 //this file is used for the api for savign the contact form data to the database
 import express from 'express';
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 
 
 const router = express.Router();
