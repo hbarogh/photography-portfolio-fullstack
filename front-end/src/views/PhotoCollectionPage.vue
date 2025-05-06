@@ -36,7 +36,7 @@ watch(() => route.params.collection, (newCollection) => {
 
 <template>
   <div>
-    <h1>{{ collection }} Collection</h1>
+    <h1 class="collection-title">{{ collection }} Collection</h1>
     <div>
       <n-grid v-if="skeleton" cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen" class="skeleton-grid">
         <n-grid-item v-for="n in 12" :key="n">
@@ -54,20 +54,6 @@ watch(() => route.params.collection, (newCollection) => {
         </n-grid-item>
       </n-grid>
     </div>
-    <!-- <n-carousel
-    effect="card"
-    prev-slide-style="transform: translateX(-150%) translateZ(-800px);"
-    next-slide-style="transform: translateX(50%) translateZ(-800px);"
-    style="height: 90vh"
-    :show-dots="false"
-    >
-      <n-carousel-item v-for="(url, index) in photos" :key="index" :style="{ width: '60%' }">
-        <img
-          class="carousel-img"
-          :src="url"
-        >
-      </n-carousel-item>
-    </n-carousel> -->
   </div>
 
 </template>
@@ -75,22 +61,13 @@ watch(() => route.params.collection, (newCollection) => {
 
 
 <style>
-/* .carousel-img {
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
+
 
  .skeleton-grid{
   width: 100%;
   max-width: 1000px;
  }
- /* .grid-card{
-  max-width: 600px;
+ .collection-title{
+  text-align: center;
  }
- .photo-img{
-  height: 300px;
-  object-fit: cover;
- } */
 </style>
