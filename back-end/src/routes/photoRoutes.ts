@@ -17,19 +17,20 @@ router.get('/:collection', async (req, res) => {
       .sort_by('public_id', 'desc')
       .max_results(50)
       .execute();
-
     const optimizedImages = results.resources.map((img: ImageProps) => {
       const transformedUrl = img.secure_url.replace(
         '/upload',
         '/upload/w_1500,f_auto/'
       );
+      const label = img.context?.custom?.label ?? collection
       return{
         ...img,
-        optimized_url: transformedUrl
+        optimized_url: transformedUrl,
+        collectionLabel: label
       };
     });
+    console.log(`Optimized images: ${optimizedImages}`);
     res.json(optimizedImages);
-    // res.json(results);
   }
   catch (error) {
     console.log(error);
