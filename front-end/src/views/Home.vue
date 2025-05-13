@@ -36,7 +36,7 @@ onMounted(() => {
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
   <div class="hero-img">
     <n-image :src="photos[0]" width="100%" object-fit="cover"/>
-    <n-grid s:1 m:2: l: 3 1-3 responsive="screen">
+    <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(url, index) in photos" :key="index">
         <n-card >
           <n-image :src=url>
