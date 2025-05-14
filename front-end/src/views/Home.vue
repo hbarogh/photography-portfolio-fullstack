@@ -39,7 +39,6 @@ onMounted(() => {
 
 
 <template>
-  <pre>{{ photos }}</pre>
   <div>
     <h1 class="home-title">Home Page</h1>
   </div>
