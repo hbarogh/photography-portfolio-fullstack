@@ -20,7 +20,7 @@ router.get('/:collection', async (req, res) => {
     const optimizedImages = results.resources.map((img: ImageProps) => {
       const transformedUrl = img.secure_url.replace(
         '/upload',
-        '/upload/w_1500,f_auto/'
+        '/upload/q_auto/f_auto/'
       );
       const label = img.context?.custom?.label ?? collection
       return{
@@ -29,7 +29,6 @@ router.get('/:collection', async (req, res) => {
         collectionLabel: label
       };
     });
-    console.log(`Optimized images: ${optimizedImages}`);
     res.json(optimizedImages);
   }
   catch (error) {

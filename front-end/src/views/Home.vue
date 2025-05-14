@@ -10,12 +10,12 @@ const skeleton = ref(true)
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
+    // const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
       optimized_url: img.optimized_url,
       collectionLabel: img.collectionLabel
   }));
     console.log(`response: ${response}`);
-    // console.log(`photos: ${photos.value}`)
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -43,8 +43,8 @@ onMounted(() => {
     <h1 class="home-title">Home Page</h1>
   </div>
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
-  <div class="hero-img">
-    <n-image v-if="photos.length > 0" :src="photos[0].optimized_url" width="100%" object-fit="cover"/>
+  <div class="home-page">
+    <n-image v-if="photos.length > 0" :src="photos[0].optimized_url" object-fit="cover" class="landing-image"/>
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick()">
@@ -66,11 +66,16 @@ onMounted(() => {
   text-align: center;
 }
 
-.hero-img{
+.home-page{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* .landing-image{
+  max-height: 100vh;
+  height: 100% 
+} */
 
 .overlay-text {
   position: absolute;
