@@ -14,6 +14,7 @@ router.get('/:collection', async (req, res) => {
   try{
     const results = await cloudinary.search
       .expression(`folder=${process.env.CLOUDINARY_FOLDER}/${collection}`)
+      .with_field("context")
       .sort_by('public_id', 'desc')
       .max_results(50)
       .execute();
@@ -23,6 +24,7 @@ router.get('/:collection', async (req, res) => {
         '/upload/q_auto/f_auto/'
       );
       const label = img.context?.custom?.label ?? collection
+      console.log(`lable: ${label}`);
       return{
         ...img,
         optimized_url: transformedUrl,
