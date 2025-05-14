@@ -14,7 +14,8 @@ const allowedOrigins = [
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin) return cb(null, true);
-    return cb(null, allowedOrigins.includes(origin));
+    if (allowedOrigins.includes(origin)) return cb(null, true);
+    cb(new Error('Not allowed by CORS'));
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
