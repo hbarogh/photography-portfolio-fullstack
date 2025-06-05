@@ -37,7 +37,7 @@ watch(() => route.params.collection, (newCollection) => {
 <template>
   <div>
     <h1 class="collection-title">{{ collection }} Collection</h1>
-    <div>
+    <div class="container">
       <n-grid v-if="skeleton" cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen" class="skeleton-grid">
         <n-grid-item v-for="n in 12" :key="n">
           <n-card :bordered="false">
@@ -49,10 +49,19 @@ watch(() => route.params.collection, (newCollection) => {
       <n-grid v-else cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
         <n-grid-item v-for="(url, index) in photos" :key="index" >
           <n-card :bordered="false" :hoverable="true" class="grid-card">
-            <n-image :src="url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover" />
+            <n-image :src="url" lazy alt="photo" width="100%" height="100%" class="photo-img" object-fit="cover" />
           </n-card>
         </n-grid-item>
       </n-grid>
+      <!-- <n-grid v-else cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
+        <n-grid-item v-for="(url, index) in photos" :key="index" >
+        </n-grid-item>
+      </n-grid> -->
+      
+      <!-- <n-card v-else v-for="(url,index) in photos" :key="index" :bordered="false" :hoverable="true" class="grid-card">
+        <n-image :src="url" lazy alt="photo" width="100%" height="100%" class="photo-img" object-fit="cover" />
+      </n-card>
+       -->
     </div>
   </div>
 
@@ -71,4 +80,24 @@ watch(() => route.params.collection, (newCollection) => {
  .collection-title{
   text-align: center;
  }
+
+ .photo-grid{
+  padding: 0;
+  display: flex;
+
+ }
+
+ .container{
+  max-width: 1224px;
+  width: 90%;
+  margin: auto;
+  padding: 1rem;
+ }
+
+ .grid-card{
+  display: flex;
+  flex-direction: column;
+ }
+
+ 
 </style>
