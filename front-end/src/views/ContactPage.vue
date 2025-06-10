@@ -34,7 +34,6 @@ onMounted(() => {
 
 <template>
   <div class="contact-page-wrapper">
-    <h1 class="page-title">Contact Page</h1>
     <div class="contact-form-wrapper">
       <ContactForm/>
     </div>
@@ -66,10 +65,6 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-}
-
-.page-title {
-  text-align: center;
 }
 
 .contact-form-wrapper {
