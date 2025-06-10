@@ -1,12 +1,17 @@
-
+import {h} from 'vue';
 
 export const mobileMenuOptions = [
   {
     label: 'Menu',
     children: [
       {
-        label: 'Home',
-        key: 'Home'
+        label: '',
+        key: 'Home',
+        icon: () => 
+          h('img', {
+            src: new URL('../assets/HBP-Black.svg', import.meta.url).href,
+            style: 'width: 30px; height: 30px; display: block;'
+          })
       },
       {
         label: 'Works',
