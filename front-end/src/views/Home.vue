@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { NImage, NSkeleton, NCard, NGrid, NGridItem } from 'naive-ui';
+import ContactForm from '../components/ContactForm.vue';
 const collection = ref("HomePage");
 const photos = ref<{optimized_url: string, collectionLabel: string}[]>([]);
 // const photos = ref<string[]>([]);
@@ -40,11 +41,10 @@ onMounted(() => {
 
 <template>
   <div>
-    <h1 class="home-title">Home Page</h1>
+    <!-- <h1 class="home-title">Home Page</h1> -->
   </div>
-  <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
+  <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
   <div class="home-page">
-    <n-image v-if="photos.length > 0" :src="photos[0].optimized_url" object-fit="cover" class="landing-image"/>
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick()">
@@ -56,6 +56,7 @@ onMounted(() => {
         </n-card>
       </n-grid-item>
     </n-grid>
+    <contact-form/>
   </div>
 </template>
 
@@ -72,10 +73,10 @@ onMounted(() => {
   align-items: center;
 }
 
-/* .landing-image{
-  max-height: 100vh;
-  height: 100% 
-} */
+.skeleton-loading{
+  align-items: center;
+  justify-content: center;
+}
 
 .overlay-text {
   position: absolute;

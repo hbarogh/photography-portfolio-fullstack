@@ -2,7 +2,7 @@
 import ContactForm from '../components/ContactForm.vue';
 import {onMounted, ref} from 'vue';
 import axios from 'axios';
-import { NCarousel, NCarouselItem, } from 'naive-ui';
+import { NCarousel, NCarouselItem, NSkeleton} from 'naive-ui';
 
 const collection = ref("ContactPage");
 const photos = ref<string[]>([]);
