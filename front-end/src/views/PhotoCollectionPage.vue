@@ -95,19 +95,23 @@ watch(() => route.params.collection, (newCollection) => {
   column-gap: 0.25rem;
   align-items: center;
 
-  @media (min-width: 640px){
+}
+@media (min-width: 640px){
+  .photo-gallery-masonry{
     column-count: 2;
   }
+}
 
-  @media (min-width: 1024px){
+@media (min-width: 1024px){
+  .photo-gallery-masonry{
     column-count: 3;
   }
- }
+}
 
  .masonry-item{
   break-inside: avoid;
   margin-bottom: 0.5rem;
  }
 
- 
+
 </style>

@@ -44,7 +44,10 @@ onMounted(() => {
     <!-- <h1 class="home-title">Home Page</h1> -->
   </div>
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
-  <div class="home-page">
+  <div v-else class="home-page">
+    <div class="hero-img">
+      <n-image  :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover"/> 
+    </div>
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick()">
@@ -71,6 +74,18 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hero-img{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .hero-img{
+    height: 32.5vh;
+  }
 }
 
 .skeleton-loading{
