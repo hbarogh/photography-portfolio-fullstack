@@ -46,13 +46,22 @@ watch(() => route.params.collection, (newCollection) => {
         </n-grid-item>
       </n-grid>
 
-      <n-grid v-else cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
+      <!-- <n-grid v-else cols="3" x-gap="10" y-gap="8" class="photo-grid" responsive="screen">
         <n-grid-item v-for="(url, index) in photos" :key="index" >
           <n-card :bordered="false" :hoverable="true" class="grid-card">
             <n-image :src="url" lazy alt="photo" width="100%" height="100%" class="photo-img" object-fit="cover" />
           </n-card>
         </n-grid-item>
-      </n-grid>
+      </n-grid> -->
+      
+      <div v-else class="photo-gallery-masonry">
+        <div v-for="(url, index) in photos" :key="index" class="masonry-item">
+          <n-card :bordered="false" :hoverable="false" class="grid-card">
+            <n-image :src="url" lazy width="100%" height="100%" alt="photo" class="photo-img" object-fit="cover"/>
+          </n-card>
+        </div>
+      </div>
+      
     </div>
   </div>
 
@@ -72,11 +81,7 @@ watch(() => route.params.collection, (newCollection) => {
   text-align: center;
  }
 
- .photo-grid{
-  padding: 0;
-  display: flex;
 
- }
 
  .container{
   max-width: 1224px;
@@ -85,9 +90,23 @@ watch(() => route.params.collection, (newCollection) => {
   padding: 1rem;
  }
 
- .grid-card{
-  display: flex;
-  flex-direction: column;
+ .photo-gallery-masonry{
+  column-count: 1;
+  column-gap: 0.25rem;
+  align-items: center;
+
+  @media (min-width: 640px){
+    column-count: 2;
+  }
+
+  @media (min-width: 1024px){
+    column-count: 3;
+  }
+ }
+
+ .masonry-item{
+  break-inside: avoid;
+  margin-bottom: 0.5rem;
  }
 
  
