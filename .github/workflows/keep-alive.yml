@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send HEAD request to keep backend alive
-        run: curl -X GET https://backend-3497.onrender.com/healthz || echo "Ping failed"
+        run: curl -I https://backend-3497.onrender.com/healthz || echo "Ping failed"

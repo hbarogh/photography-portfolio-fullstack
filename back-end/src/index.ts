@@ -25,7 +25,7 @@ app.use('/api/photos', photoRoutes);
 app.use('/api/contact', contactRoutes);
 
 //healthz request to keep backend alive
-app.get('/healthz', (req, res) => {
+app.head('/healthz', (req, res) => {
   res.status(200).send('OK');
 });
 
