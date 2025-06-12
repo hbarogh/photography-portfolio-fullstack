@@ -24,8 +24,9 @@ app.use(express.json());
 app.use('/api/photos', photoRoutes);
 app.use('/api/contact', contactRoutes);
 
-app.head('/ping', (req, res) => {
-  res.status(200).end();
+//healthz request to keep backend alive
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
 });
 
 app.listen(PORT, () => {
