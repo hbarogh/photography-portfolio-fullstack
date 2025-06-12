@@ -26,7 +26,7 @@ app.use('/api/contact', contactRoutes);
 
 //healthz request to keep backend alive
 app.head('/healthz', (req, res) => {
-  res.status(200).send('OK');
+  res.status(200);
 });
 
 app.listen(PORT, () => {
