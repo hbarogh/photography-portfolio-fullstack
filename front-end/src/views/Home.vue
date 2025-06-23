@@ -11,8 +11,8 @@ const skeleton = ref(true)
 const router = useRouter();
 async function fetchPhotos(collection: string): Promise<void> {
   try{
-    // const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
-    const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
+    const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
+    // const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
       optimized_url: img.optimized_url,
       collectionLabel: img.collectionLabel
