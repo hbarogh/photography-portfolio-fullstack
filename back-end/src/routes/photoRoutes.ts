@@ -23,7 +23,7 @@ router.get('/:collection', async (req, res) => {
         '/upload',
         '/upload/q_auto/f_auto/'
       );
-      const label = img.context?.custom?.label ?? collection
+      const label = img.context?.label ?? collection
       console.log(`lable: ${label}`);
       return{
         ...img,
