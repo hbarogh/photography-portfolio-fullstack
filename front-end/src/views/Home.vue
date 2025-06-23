@@ -4,7 +4,7 @@ import {useRouter} from 'vue-router';
 import axios from 'axios';
 import { NImage, NSkeleton, NCard, NGrid, NGridItem } from 'naive-ui';
 import ContactForm from '../components/ContactForm.vue';
-const newCollection:string = "HomePage";
+const collection:string = "HomePage";
 const photos = ref<{optimized_url: string, collectionLabel: string}[]>([]);
 // const photos = ref<string[]>([]);
 const skeleton = ref(true)
@@ -12,7 +12,7 @@ const router = useRouter();
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     // const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
-    const response = await axios.get(`http://localhost:5000/api/photos/${newCollection}`);
+    const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
       optimized_url: img.optimized_url,
       collectionLabel: img.collectionLabel
@@ -37,7 +37,7 @@ function handleWorkCardClick(key: string){
 }
 
 onMounted(() => {
-  fetchPhotos(newCollection)
+  fetchPhotos(collection)
 });
 
 
