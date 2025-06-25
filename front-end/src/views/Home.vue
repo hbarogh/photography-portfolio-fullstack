@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import {useRouter} from 'vue-router';
 import axios from 'axios';
 import { NImage, NSkeleton, NCard, NGrid, NGridItem } from 'naive-ui';
@@ -7,8 +7,9 @@ import ContactForm from '../components/ContactForm.vue';
 const collection:string = "HomePage";
 const photos = ref<{optimized_url: string, collectionLabel: string}[]>([]);
 // const photos = ref<string[]>([]);
-const skeleton = ref(true)
+const skeleton = ref(true);
 const router = useRouter();
+const isMobile =ref(false);
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
@@ -34,13 +35,22 @@ function handleWorkCardClick(key: string){
   router.push({ name: "PhotoCollectionPage", params: { collection: key } });
 
 
+}  
+
+function checkSize(): void {
+  isMobile.value = window.innerWidth <= 500;
 }
 
+
 onMounted(() => {
-  fetchPhotos(collection)
+  fetchPhotos(collection);
+  checkSize();
+  window.addEventListener("IsMobile", checkSize);
+});  
+
+onBeforeUnmount(() => {
+  window.removeEventListener("IsMobile", checkSize);
 });
-
-
 </script>
 
 
@@ -51,8 +61,10 @@ onMounted(() => {
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
   <div v-else class="home-page">
     <div class="hero-img">
-      <n-image  :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover"/> 
+      <n-image v-if="!isMobile" :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover"/> 
+      <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover"/> 
     </div>
+    
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)">
@@ -89,7 +101,7 @@ onMounted(() => {
 
 @media (max-width: 640px) {
   .hero-img{
-    height: 32.5vh;
+    height: auto;
   }
 }
 
