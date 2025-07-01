@@ -30,11 +30,7 @@ async function fetchPhotos(collection: string): Promise<void> {
 }
 
 function handleWorkCardClick(key: string){
-  console.log("handle work card click function hit");
-  console.log(`key that was passed to handle work card click function: ${key}`);
   router.push({ name: "PhotoCollectionPage", params: { collection: key } });
-
-
 }  
 
 function checkSize(): void {
@@ -66,7 +62,7 @@ onBeforeUnmount(() => {
     </div>
     
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
-      <n-grid-item v-for="(photo, index) in photos" :key="index">
+      <n-grid-item v-for="(photo, index) in photos.filter((_, i) => i !==2)" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)">
           <n-image :src="photo.optimized_url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover">
           </n-image>
