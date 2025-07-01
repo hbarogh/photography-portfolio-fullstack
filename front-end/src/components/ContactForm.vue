@@ -70,7 +70,7 @@ async function submitContactForm(): Promise<void> {
           <n-input  v-model:value="message"  placeholder="Message Details" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
         <div class="submit-button-wrapper">
-          <n-button round primary @click="submitContactForm" style="background-color: black; color: white; width: 15rem; align-items: center;">
+          <n-button round primary @click="submitContactForm" style="background-color: black; color: white; width: 15rem; align-items: center; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4); ">
             Submit
           </n-button>
         </div>
@@ -89,6 +89,7 @@ async function submitContactForm(): Promise<void> {
   max-width: 600px;
   width: 100%;
   height: 80vh;
+  display:flex;
 }
 
 .inline-name-fields{
