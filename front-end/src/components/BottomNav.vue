@@ -44,6 +44,11 @@ onBeforeUnmount(() => {
       mode="horizontal"
       :options="bottomNavOptions"
       @update:value="handleMenuSelect"
+      :theme-overrides="{
+        itemTextColor: 'white',
+        itemTextColorHover: '#cccccc',
+        itemTextColorActive: '#ffffff'
+      }"
     />
 </div>
 </template>
@@ -56,6 +61,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100%;
+  background-color: rgb(21, 21, 21);
 }
 
 </style>

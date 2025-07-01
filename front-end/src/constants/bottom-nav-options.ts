@@ -6,7 +6,7 @@ export const bottomNavOptions = [
     key: 'Home',
     icon: () => 
       h('img', {
-        src: new URL('../assets/HBP-Black.svg', import.meta.url).href,
+        src: new URL('../assets/HBP-White.svg', import.meta.url).href,
         style: 'width: 30px; height: 30px; display: block;'
       })
   },
