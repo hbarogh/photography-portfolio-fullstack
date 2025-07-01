@@ -1,4 +1,4 @@
-//this file is used for the api for savign the contact form data to the database
+//this file is used for the api for saving the contact form data to the database
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import { Resend } from 'resend';
@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 const resend = new Resend(process.env.EMAIL_API_KEY);
 //here I am making the post api now 
 
-router.post('/', async (req, res) => {
+router.post('/', async function(req, res) {
   const {firstName, lastName, email, phone, subject, message} = req.body 
 
   try {

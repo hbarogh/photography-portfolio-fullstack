@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BottomNav from './components/BottomNav.vue';
 import NavBar from './components/NavBar.vue';
 import ScrollToTopButton from './components/ScrollToTopButton.vue';
 import {Analytics} from '@vercel/analytics/vue';
@@ -11,6 +12,7 @@ import { lightTheme, NConfigProvider } from 'naive-ui';
     <ScrollToTopButton/>
     <router-view/>
     <Analytics/>
+    <BottomNav/>
   </n-config-provider>
 </template>
 

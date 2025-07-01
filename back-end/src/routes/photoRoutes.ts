@@ -4,7 +4,7 @@ import type { ImageProps } from '../utils/types';
 
 const router = express.Router()
 
-router.get('/:collection', async (req, res) => {
+router.get('/:collection', async function(req, res){
   const {collection} = req.params;
 
   if (!collection || typeof collection !== 'string'){
@@ -37,7 +37,7 @@ router.get('/:collection', async (req, res) => {
     console.log(error);
     res.status(500).json({error: 'Failed to fetch images from cloudinary, try again' });
   }
-})
+});
 
 
 export default router 
