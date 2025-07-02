@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref, onMounted, onBeforeUnmount} from 'vue';
-import {NMenu} from 'naive-ui';
+import { NMenu } from 'naive-ui';
 import {useRouter} from 'vue-router';
 import { bottomNavOptions } from '../constants/bottom-nav-options';
 const router = useRouter();
@@ -62,6 +62,8 @@ onBeforeUnmount(() => {
   flex-wrap: nowrap;
   width: 100%;
   background-color: rgb(21, 21, 21);
+  position:relative;
+  bottom: 0;
 }
 
 </style>

@@ -21,7 +21,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <n-button v-show="showButton" @click="scrollToTop" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 1000" circle type="default" >
+  <n-button v-show="showButton" @click="scrollToTop" style="position: fixed; bottom: 4rem; right: 1rem; z-index: 1000;" circle type="default" >
     <n-icon size="24">
       <ArrowUpCircleOutline/>
     </n-icon>

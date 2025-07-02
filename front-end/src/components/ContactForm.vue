@@ -40,7 +40,6 @@ async function submitContactForm(): Promise<void> {
 
 
 <template>
-  <div>
     <n-card bordered:true hoverable:false v-if="!finishedRequest" class="contact-form">
       <n-text class="contact-form-title">
         Get in Touch
@@ -79,7 +78,6 @@ async function submitContactForm(): Promise<void> {
     <n-card v-else>
       <n-text>Thank you so much, I will be in contact shortly!</n-text>
     </n-card>
-  </div>
 </template>
 
 

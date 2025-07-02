@@ -87,7 +87,6 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2.5rem;
 }
 
 .hero-img{
