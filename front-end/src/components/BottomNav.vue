@@ -64,6 +64,7 @@ onBeforeUnmount(() => {
   background-color: rgb(21, 21, 21);
   position: fixed;
   bottom: 0;
+  z-index: 1000;
 }
 
 </style>

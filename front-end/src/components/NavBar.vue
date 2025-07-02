@@ -43,14 +43,14 @@ onBeforeUnmount(() => {
       @update:value="handleMenuSelect"
     />
   </div>
-  <div class="mobile-menu" v-else>
+  <!-- <div class="mobile-menu" v-else>
     <n-menu
       class="mobileMenu"
       :options="mobileMenuOptions"
       mode="vertical"
       @update:value="handleMenuSelect"
     />
-  </div>
+  </div> -->
 </template>
 
 <style>
