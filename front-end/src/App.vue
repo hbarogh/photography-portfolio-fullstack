@@ -4,6 +4,22 @@ import NavBar from './components/NavBar.vue';
 import ScrollToTopButton from './components/ScrollToTopButton.vue';
 import {Analytics} from '@vercel/analytics/vue';
 import { lightTheme, NConfigProvider } from 'naive-ui';
+import { ref, onMounted, onBeforeUnmount } from "vue";
+
+const isMobile = ref(false);
+
+function checkSize(): void {
+  isMobile.value = window.innerWidth <= 500;
+}
+
+onMounted(() => {
+  checkSize();
+  window.addEventListener("IsMobile", checkSize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("IsMobile", checkSize);
+});
 </script>
 
 <template>
@@ -12,7 +28,7 @@ import { lightTheme, NConfigProvider } from 'naive-ui';
     <ScrollToTopButton/>
     <router-view/>
     <Analytics/>
-    <BottomNav/>
+    <BottomNav v-if="isMobile"/>
   </n-config-provider>
 </template>
 
