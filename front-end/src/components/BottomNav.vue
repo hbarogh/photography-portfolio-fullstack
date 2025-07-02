@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
   flex-wrap: nowrap;
   width: 100%;
   background-color: rgb(21, 21, 21);
-  position:relative;
+  position: fixed;
   bottom: 0;
 }
 

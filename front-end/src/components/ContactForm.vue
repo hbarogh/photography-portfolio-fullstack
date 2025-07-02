@@ -86,8 +86,9 @@ async function submitContactForm(): Promise<void> {
 .contact-form{
   max-width: 600px;
   width: 100%;
-  height: 80vh;
+  height: 80dvh;
   display:flex;
+  margin-bottom: 50px;
 }
 
 .inline-name-fields{
