@@ -3,7 +3,7 @@ import { NMenu } from "naive-ui";
 import { useRouter } from "vue-router";
 import { menuOptions } from "../constants/menu-options";
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { mobileMenuOptions } from "../constants/mobile-menu-options";
+// import { mobileMenuOptions } from "../constants/mobile-menu-options";
 const router = useRouter();
 const isMobile = ref(false);
 
