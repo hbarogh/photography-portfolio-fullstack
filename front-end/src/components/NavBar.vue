@@ -14,7 +14,10 @@ function handleMenuSelect(key: string) {
     router.push({ name: "AboutPage" });
   } else if (key === "ContactPage") {
     router.push({ name: "ContactPage" });
-  } else {
+  } else if (key === "InstagramPage"){
+    console.log("instagram icon clicked");
+  } 
+  else {
     // Anything else is assumed to be a collection
     router.push({ name: "PhotoCollectionPage", params: { collection: key } });
   }

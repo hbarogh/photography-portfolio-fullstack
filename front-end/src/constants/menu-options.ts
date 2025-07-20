@@ -49,6 +49,7 @@ export const menuOptions = [
     key: 'ContactPage'
   },
   {
+    key: 'InstagramPage',
     icon: () => h(
       'a',
       {
