@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
 <style>
 .bottom-nav {
   display: flex;
-  align-items: center; /* Centers items vertically */
+  align-items: center; 
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100%;
@@ -66,5 +66,4 @@ onBeforeUnmount(() => {
   bottom: 0;
   z-index: 1000;
 }
-
 </style>

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory} from 'vue-router';
 import type {RouteRecordRaw} from 'vue-router';
 import Home from '../views/Home.vue';
-import Works from '../views/Works.vue';
 import ContactPage from '../views/ContactPage.vue';
 
 import NotFoundPage from '../views/NotFoundPage.vue';
@@ -14,11 +13,6 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    path: '/Works',
-    name: 'Works',
-    component: Works,
-  },
-  {
     path: '/AboutPage',
     name: 'AboutPage',
     component: AboutPage,
@@ -29,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     component: ContactPage,
   },
   {
-    path: '/Works/:collection',
+    path: '/:collection',
     name: 'PhotoCollectionPage',
     component: () => import('../views/PhotoCollectionPage.vue') //here I am doing lazy loading with this type of import statement rather than directly loading it in as I am for the others 
   },
