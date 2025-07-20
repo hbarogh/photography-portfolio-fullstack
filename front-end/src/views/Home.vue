@@ -6,7 +6,6 @@ import { NImage, NSkeleton, NCard, NGrid, NGridItem } from 'naive-ui';
 import ContactForm from '../components/ContactForm.vue';
 const collection:string = "HomePage";
 const photos = ref<{optimized_url: string, collectionLabel: string}[]>([]);
-// const photos = ref<string[]>([]);
 const skeleton = ref(true);
 const router = useRouter();
 const isMobile =ref(false);
@@ -60,23 +59,7 @@ onBeforeUnmount(() => {
       <n-image v-if="!isMobile" :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover"/>  
       <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover"/> 
     </div>
-    <!-- <div class="contact-carousel" v-else>
-      <n-carousel
-      effect="card"
-      prev-slide-style="transform: translateX(-150%) translateZ(-800px);"
-      next-slide-style="transform: translateX(50%) translateZ(-800px);"
-      style="height: 85dvh;"
-      :show-dots="false"
-      >
-        <n-carousel-item v-for="(url, index) in photos" :key="index" class="carousel-item">
-          <img
-          class="carousel-img"
-          :src="url.optimized_url"
-          >
-        </n-carousel-item>
-      </n-carousel>
-    </div>
-     -->
+
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos.filter((_, i) => i !==2)" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)">
@@ -134,26 +117,4 @@ onBeforeUnmount(() => {
   font-weight: 500;
   z-index: 1;
 }
-
-/* .contact-carousel {
-  width: 100dvw; 
-  overflow-x: hidden;  Prevent horizontal scrollbars 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.carousel-item{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
-  width: 100%;
-}
-
-.carousel-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-} */
 </style>

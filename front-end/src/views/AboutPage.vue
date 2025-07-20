@@ -54,8 +54,6 @@ onMounted(() => {
 </div>
 </template>
 
-
-
 <style>
 .about-container{
   display: flex;
