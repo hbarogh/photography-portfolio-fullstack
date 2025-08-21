@@ -12,7 +12,6 @@ const isMobile =ref(false);
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
-    // const response = await axios.get(`http://localhost:5000/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
       optimized_url: img.optimized_url,
       collectionLabel: img.collectionLabel
@@ -50,9 +49,6 @@ onBeforeUnmount(() => {
 
 
 <template>
-  <div>
-    <!-- <h1 class="home-title">Home Page</h1> -->
-  </div>
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
   <div v-else class="home-page">
     <div class="hero-img">
