@@ -40,7 +40,7 @@ onMounted(() => {
     <h1>About</h1>
     <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
     <n-card v-else :bordered="true" :hoverable="true" class="about-card">
-      <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover">
+      <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover" :preview-disabled="true">
 
       </n-image>
     </n-card>

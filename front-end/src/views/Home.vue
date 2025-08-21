@@ -52,15 +52,14 @@ onBeforeUnmount(() => {
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
   <div v-else class="home-page">
     <div class="hero-img">
-      <n-image v-if="!isMobile" :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover"/>  
-      <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover"/> 
+      <n-image v-if="!isMobile" :src="photos[3].optimized_url" width="100%" height="100%" object-fit="cover" :preview-disabled="true"/>  
+      <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover" :preview-disabled="true"/> 
     </div>
 
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen">
       <n-grid-item v-for="(photo, index) in photos.filter((_, i) => i !==2)" :key="index">
         <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)">
-          <n-image :src="photo.optimized_url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover">
-          </n-image>
+          <n-image :src="photo.optimized_url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover" :preview-disabled="true"/>
           <div class="overlay-text">
             {{ photo.collectionLabel }}
           </div>

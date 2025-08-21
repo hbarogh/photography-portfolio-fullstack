@@ -49,7 +49,7 @@ watch(() => route.params.collection, (newCollection) => {
       <div v-else class="photo-gallery-masonry">
         <div v-for="(url, index) in photos" :key="index" class="masonry-item">
           <n-card :bordered="false" :hoverable="false" class="grid-card">
-            <n-image :src="url" lazy width="100%" height="100%" alt="photo" class="photo-img" object-fit="cover"/>
+            <n-image :src="url" lazy width="100%" height="100%" alt="photo" class="photo-img" object-fit="cover" :preview-disabled="true"/>
           </n-card>
         </div>
       </div>
