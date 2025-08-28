@@ -38,6 +38,10 @@ export const menuOptions = [
         label: 'Portraits',
         key: 'Portraits'
       },
+      {
+        label: 'Italy',
+        key: 'Italy'
+      },
     ]
   },
   {

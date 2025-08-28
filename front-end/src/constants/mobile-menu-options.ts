@@ -41,6 +41,10 @@ export const mobileMenuOptions = [
             label: 'Portraits',
             key: 'Portraits'
           },
+          {
+            label: 'Italy',
+            key: 'Italy'
+          },
         ]
       },
       {
