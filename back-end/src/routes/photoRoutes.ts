@@ -18,39 +18,19 @@ router.get('/:collection', async function(req, res){
       .sort_by('public_id', 'desc')
       .max_results(50)
       .execute();
-    // const optimizedImages = results.resources.map((img: ImageProps) => {
-    //   const transformedUrl = img.secure_url.replace(
-    //     '/upload',
-    //     '/upload/q_auto/f_auto/'
-    //   );
-    //   const label = img.context?.label
-    //   return{
-    //     ...img,
-    //     optimized_url: transformedUrl,
-    //     collectionLabel: label
-    //   };
-    // });
-    // res.json(optimizedImages);
-    const images = results.resources.map((img: ImageProps) => {
-      const base = img.secure_url.replace('/upload', '/upload/q_auto,f_auto,dpr_auto');
-      // Optionally control width(s) the frontend will request:
-      const url = `${base}`;                // default (let browser pick DPR)
-      return {
-        id: img.public_id,
-        url,
-        width: img.width,
-        height: img.height,
-        format: img.format,
-        label: img.context?.label ?? null,
+    const optimizedImages = results.resources.map((img: ImageProps) => {
+      const transformedUrl = img.secure_url.replace(
+        '/upload',
+        '/upload/q_auto/f_auto/'
+      );
+      const label = img.context?.label
+      return{
+        ...img,
+        optimized_url: transformedUrl,
+        collectionLabel: label
       };
     });
-
-    // Optional caching hint for the JSON list
-    res.set('Cache-Control', 'public, max-age=60, s-maxage=300');
-    return res.json({
-      images,
-      // nextCursor: results.next_cursor ?? null, // expose if you add pagination
-    });
+    res.json(optimizedImages);
   }
   catch (error) {
     console.log(error);
