@@ -2,7 +2,7 @@
 import ContactForm from '../components/ContactForm.vue';
 import {onMounted, ref} from 'vue';
 import axios from 'axios';
-import { NCarousel, NCarouselItem, NSkeleton} from 'naive-ui';
+// import { NCarousel, NCarouselItem, NSkeleton} from 'naive-ui';
 
 const collection = ref("ContactPage");
 const photos = ref<string[]>([]);
@@ -12,7 +12,6 @@ async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => img.optimized_url);
-    console.log(`response: ${response}`);
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -38,7 +37,7 @@ onMounted(() => {
       <ContactForm/>
     </div>
   </div>
-  <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
+  <!-- <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
   <div v-else class="contact-carousel" >
     <n-carousel
     effect="card"
@@ -54,7 +53,7 @@ onMounted(() => {
         >
       </n-carousel-item>
     </n-carousel>
-  </div>
+  </div> -->
 </template>
 
 

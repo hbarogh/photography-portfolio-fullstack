@@ -16,7 +16,6 @@ async function fetchPhotos(collection: string): Promise<void> {
       optimized_url: img.optimized_url,
       collectionLabel: img.collectionLabel
   }));
-    console.log(`response: ${response}`);
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -66,7 +65,9 @@ onBeforeUnmount(() => {
         </n-card>
       </n-grid-item>
     </n-grid>
-    <contact-form/>
+    <div class="contact-form">
+      <contact-form/>
+    </div>
   </div>
 </template>
 
@@ -86,6 +87,7 @@ onBeforeUnmount(() => {
 
 .hero-img{
   width: 100%;
+  max-width: 100vw;
   height: auto;
   overflow: hidden;
 }
@@ -114,6 +116,10 @@ onBeforeUnmount(() => {
 }
 
 .collection-grid {
-  padding: 2.5%;
+  max-width: 100vw;
+}
+
+.contact-form{
+  margin-top: 1rem;
 }
 </style>

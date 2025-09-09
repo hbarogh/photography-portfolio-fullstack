@@ -13,7 +13,6 @@ async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => img.optimized_url);
-    console.log(`response: ${response}`);
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -37,7 +36,6 @@ onMounted(() => {
 
 <template>
 <div class="about-container">
-    <h1>About</h1>
     <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
     <n-card v-else :bordered="true" :hoverable="true" class="about-card">
       <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover" :preview-disabled="true">
