@@ -13,7 +13,7 @@ async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
-      optimized_url: img.optimized_url,
+      optimized_url: img.url,
       collectionLabel: img.collectionLabel
     }));
   }
@@ -51,7 +51,7 @@ onBeforeUnmount(() => {
   <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false" class="skeleton-loading"/>
   <div v-else class="home-page">
     <div class="hero-img-container">
-      <img v-if="!isMobile" :src="photos[4].optimized_url" class="hero-img" />  
+      <img v-if="!isMobile" :src="photos[8].optimized_url" class="hero-img" />  
       <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover" :preview-disabled="true"/> 
     </div>
 
@@ -94,7 +94,6 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 95.5vh;
   object-fit: cover;
-  display: block;
 }
 
 @media (max-width: 640px) {
