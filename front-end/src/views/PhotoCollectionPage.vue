@@ -3,14 +3,15 @@ import {NGrid, NGridItem, NImage, NCard, NSkeleton} from 'naive-ui';
 import { useRoute } from 'vue-router'
 import { ref, onMounted, watch } from 'vue'
 import axios from 'axios';
+import type { Photos } from '../../types/index';
 const route = useRoute()
 const collection = ref(route.params.collection as string); 
 const photos = ref<string[]>([]);
 const skeleton = ref(true)
 async function fetchPhotos(collection: string): Promise<void> {
   try{
-    const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
-    photos.value = response.data.map((img: any) => img.optimized_url);
+    const response = await axios.get<Photos[]>(`https://backend-3497.onrender.com/api/photos/${collection}`);
+    photos.value = response.data.map((img: any) => img.url);
   }
   catch (error){
     alert(`Axios error: ${error}`);

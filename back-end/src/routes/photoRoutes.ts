@@ -18,19 +18,22 @@ router.get('/:collection', async function(req, res){
       .sort_by('public_id', 'desc')
       .max_results(50)
       .execute();
-    const optimizedImages = results.resources.map((img: ImageProps) => {
-      const transformedUrl = img.secure_url.replace(
-        '/upload',
-        '/upload/q_auto/f_auto/'
-      );
+    const images = results.resources.map((img: ImageProps) => {
+      const optimized_url = cloudinary.url(img.public_id, {
+        secure: true,
+        quality: "auto",
+        fetch_format: "auto",
+      });
       const label = img.context?.label
-      return{
-        ...img,
-        optimized_url: transformedUrl,
-        collectionLabel: label
-      };
+      return {
+        id: img.public_id,
+        url: optimized_url,
+        width: img.width,
+        height: img.height,
+        label: img.context?.label ?? null,
+      }
     });
-    res.json(optimizedImages);
+    res.json(images);
   }
   catch (error) {
     console.log(error);
