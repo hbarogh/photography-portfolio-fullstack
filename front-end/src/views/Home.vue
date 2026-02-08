@@ -14,7 +14,7 @@ async function fetchPhotos(collection: string): Promise<void> {
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
     photos.value = response.data.map((img: any) => ({
       optimized_url: img.url,
-      collectionLabel: img.collectionLabel
+      collectionLabel: img.label
     }));
   }
   catch (error){
