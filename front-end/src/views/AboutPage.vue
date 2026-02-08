@@ -12,7 +12,7 @@ const skeleton = ref(true)
 async function fetchPhotos(collection: string): Promise<void> {
   try{
     const response = await axios.get(`https://backend-3497.onrender.com/api/photos/${collection}`);
-    photos.value = response.data.map((img: any) => img.optimized_url);
+    photos.value = response.data.map((img: any) => img.url);
   }
   catch (error){
     alert(`Axios error: ${error}`);
@@ -38,9 +38,7 @@ onMounted(() => {
 <div class="about-container">
     <n-skeleton v-if="skeleton"  :repeat="2" height="40px" width="60%" :sharp="false"/>
     <n-card v-else :bordered="true" :hoverable="true" class="about-card">
-      <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover" :preview-disabled="true">
-
-      </n-image>
+      <n-image :src="photos[0]" alt="photo" width="100%" height="100%" object-fit="cover" :preview-disabled="true"/>
     </n-card>
     <div class="about-text">
       <p>I'm Hayden Barogh, a passionate photographer from Dallas-Fort Worth (DFW). With an innate love for photography and an unyielding desire to capture the moment, I specialize in portrait, street, and product photography.</p>
