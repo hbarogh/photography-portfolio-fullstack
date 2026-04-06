@@ -57,12 +57,14 @@ onBeforeUnmount(() => {
 
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen" class="collection-grid">
       <n-grid-item v-for="(photo, index) in photos.filter((_, i) => i !==2)" :key="index">
-        <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)">
-          <n-image :src="photo.optimized_url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover" :preview-disabled="true"/>
-          <div class="overlay-text">
-            {{ photo.collectionLabel }}
-          </div>
-        </n-card>
+        <div class="collection-tile" >
+          <n-card :bordered="false" :hoverable="true" @click="handleWorkCardClick(photo.collectionLabel)" class="collection-card">
+            <n-image :src="photo.optimized_url" lazy alt="photo" width="100%" class="photo-img" object-fit="cover" :preview-disabled="true"/>
+            <div class="overlay-text">
+              {{ photo.collectionLabel }}
+            </div>
+          </n-card>
+        </div>
       </n-grid-item>
     </n-grid>
     <div class="contact-form">
@@ -125,5 +127,22 @@ onBeforeUnmount(() => {
 
 .contact-form{
   margin-top: 1rem;
+}
+
+.collection-tile {
+  aspect-ratio: 3/2;
+  width: 100%;
+}
+
+.collection-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.photo-img {
+  aspect-ratio: 3/2;
+  width: 100%;
 }
 </style>
