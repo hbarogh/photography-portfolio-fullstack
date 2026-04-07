@@ -53,6 +53,9 @@ onBeforeUnmount(() => {
     <div class="hero-img-container">
       <img v-if="!isMobile" :src="photos[8].optimized_url" class="hero-img" />  
       <n-image v-if="isMobile" :src="photos[2].optimized_url" width="100%" height="100%" object-fit="cover" :preview-disabled="true"/> 
+      <div v-if="!isMobile" class="hero-text-container">
+        <text class="hero-text">HaydenBProductions</text>
+      </div>
     </div>
 
     <n-grid  cols="1 s:2 m:3 1:5" x-gap="10" y-gap="8" responsive="screen" class="collection-grid">
@@ -119,6 +122,23 @@ onBeforeUnmount(() => {
   font-size: 16px;
   font-weight: 500;
   z-index: 1;
+}
+
+.hero-text {
+  position: absolute;
+  color: white;
+  bottom: 0px;
+  padding: 5px;
+  font-size: 64px;
+  font-weight: 400;
+  z-index: 10; 
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text-container {
+  justify-content: center;
+  align-items: center;
 }
 
 .collection-grid {
