@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {NCard, NInput, NFormItem, NForm, NButton, NText} from 'naive-ui';
+import type { FormInst, FormRules } from 'naive-ui';
 import axios from 'axios';
 import { ref } from 'vue';
 
@@ -12,10 +13,51 @@ const subject = ref<string>('');
 const message = ref<string>('');
 const finishedRequest = ref(false);
 
+const formRef = ref<FormInst | null>(null);
+
+const formValue = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: ''
+});
+
+const rules: FormRules = {
+  firstName: [
+    { required: true, message: 'First name is required', trigger: ['input', 'blur'] }
+  ],
+  lastName: [
+    { required: true, message: 'Last name is required', trigger: ['input', 'blur'] }
+  ],
+  email: [
+    { required: true, message: 'Email is required', trigger: ['input', 'blur'] },
+    { type: 'email', message: 'Enter a valid email address', trigger: ['blur', 'input'] }
+  ],
+  phone: [
+    { required: true, message: 'Phone number is required', trigger: ['input', 'blur'] },
+  ],
+  subject: [
+    { required: true, message: 'Subject is required', trigger: ['input', 'blur'] }
+  ],
+  message: [
+    { required: true, message: 'Message is required', trigger: ['input', 'blur'] },
+    { min: 10, message: 'Message must be at least 10 characters', trigger: ['input', 'blur'] }
+  ]
+};
 
 async function submitContactForm(): Promise<void> {
+  if (!formRef.value) return; 
+  try {
+    await formRef.value.validate();
+  } catch(error) {
+    alert("Please double check your contact form and fix any errors please.");
+    return;
+  }
+
   try{
-    const response = await axios.post(`https://backend-3497.onrender.com/api/contact`, {
+    await axios.post(`https://backend-3497.onrender.com/api/contact`, {
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value,
@@ -23,19 +65,13 @@ async function submitContactForm(): Promise<void> {
       subject: subject.value,
       message: message.value
     });
-    console.log(`Response from post request: ${response.data}`);
+    finishedRequest.value = true; 
   }
   catch (error){
-    alert(`Axios error: ${error}`);
-    console.error('Axios error: ', error);
-  }
-  finally{
-    finishedRequest.value = true;
+    alert(`Failed to submit contact form, error: ${error}`);
+    finishedRequest.value = false;
   }
 }
-
-
-
 </script>
 
 
@@ -47,26 +83,31 @@ async function submitContactForm(): Promise<void> {
       <n-text>
         Looking for a portrait photographer in DFW? If you have any questions or want to book a session, please fill out the form below, and I will be in contact shortly. 
       </n-text>
-      <n-form label-placement="top" >
+      <n-form 
+        ref="formRef"
+        :model="formValue"
+        :rules="rules"
+        label-placement="top" 
+      >
         <div class="inline-name-fields">
-          <n-form-item required: true >
-            <n-input  v-model:value="firstName"  placeholder="First Name" clearable style="border-radius: 0.5rem;"/>
+          <n-form-item path="firstName" >
+            <n-input  v-model:value="formValue.firstName"  placeholder="First Name" clearable style="border-radius: 0.5rem;"/>
           </n-form-item>
-          <n-form-item required: true >
-            <n-input  v-model:value="lastName"  placeholder="Last Name" clearable style="border-radius: 0.5rem;"/>
+          <n-form-item path="lastName">
+            <n-input  v-model:value="formValue.lastName"  placeholder="Last Name" clearable style="border-radius: 0.5rem;"/>
           </n-form-item>
         </div>
-        <n-form-item required: true >
-          <n-input  v-model:value="email"  placeholder="Email" clearable style="border-radius: 0.5rem;" />
+        <n-form-item path="email">
+          <n-input  v-model:value="formValue.email"  placeholder="Email" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
-        <n-form-item required: true >
-          <n-input  v-model:value="phone"  placeholder="Phone" clearable style="border-radius: 0.5rem;" />
+        <n-form-item path="phone">
+          <n-input  v-model:value="formValue.phone"  placeholder="Phone" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
-        <n-form-item required: true >
-          <n-input  v-model:value="subject"  placeholder="Subject" clearable style="border-radius: 0.5rem;" />
+        <n-form-item path="subject" >
+          <n-input  v-model:value="formValue.subject"  placeholder="Subject" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
-        <n-form-item required: true >
-          <n-input  v-model:value="message"  placeholder="Message Details" clearable style="border-radius: 0.5rem;" />
+        <n-form-item path="message">
+          <n-input  v-model:value="formValue.message" type="textarea" placeholder="Message Details" clearable style="border-radius: 0.5rem;" />
         </n-form-item>
         <div class="submit-button-wrapper">
           <n-button round primary @click="submitContactForm" style="background-color: black; color: white; width: 15rem; align-items: center; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4); ">
