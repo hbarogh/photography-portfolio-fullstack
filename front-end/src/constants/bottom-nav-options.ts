@@ -38,6 +38,14 @@ export const bottomNavOptions = [
         label: 'Portraits',
         key: 'Portraits'
       },
+      {
+        label: 'Italy',
+        key: 'Italy'
+      },
+      {
+        label: 'Film',
+        key: 'Film'
+      }
     ]
   },
   {
