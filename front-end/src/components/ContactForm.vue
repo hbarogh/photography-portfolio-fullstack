@@ -53,12 +53,12 @@ async function submitContactForm(): Promise<void> {
   try{
     await formRef.value.validate();
     await axios.post(`https://backend-3497.onrender.com/api/contact`, {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      email: email.value,
-      phone: phone.value,
-      subject: subject.value,
-      message: message.value
+      firstName: formValue.value.firstName,
+      lastName: formValue.value.lastName,
+      email: formValue.value.email,
+      phone: formValue.value.phone,
+      subject: formValue.value.subject,
+      message: formValue.value.message
     });
     finishedRequest.value = true; 
   }
