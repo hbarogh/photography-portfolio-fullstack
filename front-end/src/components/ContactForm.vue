@@ -49,14 +49,9 @@ const rules: FormRules = {
 
 async function submitContactForm(): Promise<void> {
   if (!formRef.value) return; 
-  try {
-    await formRef.value.validate();
-  } catch(error) {
-    alert("Please double check your contact form and fix any errors please.");
-    return;
-  }
 
   try{
+    await formRef.value.validate();
     await axios.post(`https://backend-3497.onrender.com/api/contact`, {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -68,6 +63,7 @@ async function submitContactForm(): Promise<void> {
     finishedRequest.value = true; 
   }
   catch (error){
+    console.error("error in catch statement: ", error);
     alert(`Failed to submit contact form, error: ${error}`);
     finishedRequest.value = false;
   }
