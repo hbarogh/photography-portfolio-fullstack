@@ -4,13 +4,6 @@ import type { FormInst, FormRules } from 'naive-ui';
 import axios from 'axios';
 import { ref } from 'vue';
 
-
-const firstName = ref<string>('');
-const lastName = ref<string>('');
-const email = ref<string>('');
-const phone = ref('');
-const subject = ref<string>('');
-const message = ref<string>('');
 const finishedRequest = ref(false);
 
 const formRef = ref<FormInst | null>(null);
