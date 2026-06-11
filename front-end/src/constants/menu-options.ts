@@ -45,6 +45,10 @@ export const menuOptions = [
       {
         label: 'Film',
         key: 'Film'
+      },
+      {
+        label: 'Norway',
+        key: 'Norway'
       }
     ]
   },

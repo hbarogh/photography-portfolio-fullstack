@@ -48,6 +48,10 @@ export const mobileMenuOptions = [
           {
             label: 'Film',
             key: 'Film'
+          },
+          {
+            label: 'Norway',
+            key: 'Norway'
           }
         ]
       },
