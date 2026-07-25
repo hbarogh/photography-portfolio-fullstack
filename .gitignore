@@ -21,4 +21,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw? 
+
+#prisma specific stuff
+back-end/src/generated/prisma/
