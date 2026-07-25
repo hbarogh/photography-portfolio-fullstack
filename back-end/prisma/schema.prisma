@@ -13,7 +13,6 @@ model ContactMessage {
   lastName  String
   email     String   @unique
   phone     String
-  budget    Int
   subject   String
   message   String
   createdAt DateTime @default(now())
