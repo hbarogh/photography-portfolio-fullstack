@@ -24,4 +24,4 @@ dist-ssr
 *.sw? 
 
 #prisma specific stuff
-back-end/src/generated/prisma/
+back-end/src/generated
