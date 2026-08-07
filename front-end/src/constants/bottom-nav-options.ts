@@ -45,6 +45,10 @@ export const bottomNavOptions = [
       {
         label: 'Film',
         key: 'Film'
+      },
+      {
+        label: 'Norway',
+        key: 'Norway'
       }
     ]
   },
