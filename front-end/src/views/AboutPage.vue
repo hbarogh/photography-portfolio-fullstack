@@ -45,7 +45,7 @@ onMounted(() => {
 
       <p>My approach to photography is deeply rooted in a commitment to authenticity. I believe that the most captivating images are those that tell a story and allow people to connect with the image.</p>
 
-      <p>Thank you for stopping by, and feel free to contact me below.</p>
+      <p>Thank you for stopping by, and feel free to contact me with inquires.</p>
     </div>
 </div>
 </template>
