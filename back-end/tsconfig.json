@@ -4,6 +4,7 @@
       "node_modules"
     ],
   "include": [
+    "src/**/*.ts",
     "generated/prisma8/**/*.d.ts"
   ],
   "compilerOptions": {
