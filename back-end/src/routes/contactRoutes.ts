@@ -13,10 +13,9 @@ const resend = new Resend(process.env.EMAIL_API_KEY);
 
 router.post('/', async function(req, res) {
   const {firstName, lastName, email, phone, subject, message} = req.body 
-  
   try {
     const saved = await db.orm.public.ContactMessage.create(
-      {firstName, lastName, email, phone, subject, message },
+      {firstName, lastName, email, phone, subject, message }
     );
 
     resend.emails.send({
