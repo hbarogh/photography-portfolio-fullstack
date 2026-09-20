@@ -1,0 +1,16 @@
+// use prisma-8
+// Contract inferred from the live database schema. Edit as needed, then run `prisma contract emit`.
+
+model ContactMessage {
+  id        Int          @id(map: "ContactMessage_pkey") @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String
+  phone     String
+  subject   String
+  message   String
+  createdAt Timestamp(3) @default(now())
+
+  @@index([email], map: "ContactMessage_email_key", unique: true)
+  @@map("ContactMessage")
+}

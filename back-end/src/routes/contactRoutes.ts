@@ -1,25 +1,22 @@
 //this file is used for the api for saving the contact form data to the database
 import express from 'express';
-import { PrismaClient } from '../generated/prisma/client'
 import { Resend } from 'resend';
-import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg';
+import postgres from "@prisma/orm-postgres/runtime"; 
+import type { Contract } from "../../generated/prisma8/contract.js"; 
+import contractJson from "../../generated/prisma8/contract.json" with { type: "json" }; 
+
 const router = express.Router();
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
-const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({adapter});
+export const db = postgres<Contract>({ url: process.env.DATABASE_URL, contractJson }); 
 const resend = new Resend(process.env.EMAIL_API_KEY);
-//here I am making the post api now 
+
 
 router.post('/', async function(req, res) {
   const {firstName, lastName, email, phone, subject, message} = req.body 
-
+  
   try {
-    const saved = await prisma.contactMessage.create({
-      data: {firstName, lastName, email, phone, subject, message },
-    });
+    const saved = await db.orm.public.ContactMessage.create(
+      {firstName, lastName, email, phone, subject, message },
+    );
 
     resend.emails.send({
       from: process.env.FROM_EMAIL!,

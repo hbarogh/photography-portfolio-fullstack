@@ -3,7 +3,11 @@
       "prisma.config.ts",
       "node_modules"
     ],
+  "include": [
+    "generated/prisma8/**/*.d.ts"
+  ],
   "compilerOptions": {
+    "resolveJsonModule": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
