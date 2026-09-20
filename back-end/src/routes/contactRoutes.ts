@@ -3,7 +3,8 @@ import express from 'express';
 import { Resend } from 'resend';
 import postgres from "@prisma/orm-postgres/runtime"; 
 import type { Contract } from "../../generated/prisma8/contract.js"; 
-import contractJson from "../../generated/prisma8/contract.json" with { type: "json" }; 
+import contractJson from "../../generated/prisma8/contract.json"; 
+// import contractJson from "../../generated/prisma8/contract.json" with { type: "json" };  Might change this back
 
 const router = express.Router();
 export const db = postgres<Contract>({ url: process.env.DATABASE_URL, contractJson }); 
