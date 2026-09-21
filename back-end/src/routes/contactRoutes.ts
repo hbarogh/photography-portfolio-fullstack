@@ -2,9 +2,9 @@
 import express from 'express';
 import { Resend } from 'resend';
 import postgres from "@prisma/orm-postgres/runtime"; 
+import "temporal-polyfill/full/global";
 import type { Contract } from "../../generated/prisma8/contract.js"; 
 import contractJson from "../../generated/prisma8/contract.json"; 
-// import contractJson from "../../generated/prisma8/contract.json" with { type: "json" };  Might change this back
 
 const router = express.Router();
 export const db = postgres<Contract>({ url: process.env.DATABASE_URL, contractJson }); 
@@ -12,7 +12,9 @@ const resend = new Resend(process.env.EMAIL_API_KEY);
 
 
 router.post('/', async function(req, res) {
+  
   const {firstName, lastName, email, phone, subject, message} = req.body 
+  
   try {
     const saved = await db.orm.public.ContactMessage.create(
       {firstName, lastName, email, phone, subject, message }
